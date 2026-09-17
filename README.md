@@ -28,15 +28,19 @@ Developer
  Prometheus + Grafana
 ```
 
-AWS infrastructure is provisioned using Terraform with:
+### Infrastructure Provisioning
 
-* VPC
-* Public and private subnets
-* EC2 instances
-* Application Load Balancer
-* Security Groups
-* Amazon ECR
-* RDS PostgreSQL
+Infrastructure is provisioned using Terraform on AWS.
+
+VPC with public and private subnets across Availability Zones
+Internet Gateway and NAT Gateway
+EC2 instances for application workloads
+Application Load Balancer
+Amazon ECR repository
+PostgreSQL RDS
+Security Groups for controlled access
+IAM roles and instance profiles
+
 
 ## Technology Stack
 
@@ -54,22 +58,25 @@ AWS infrastructure is provisioned using Terraform with:
 
 ## Infrastructure Provisioning
 
-Terraform is used to provision and manage the AWS infrastructure.
+Terraform configuration is organized into:
 
-The `terraform/` directory contains:
-
-```text
 terraform/
 ├── main.tf
 ├── provider.tf
 ├── variables.tf
-└── outputs.tf
-```
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/36ad730a-6e1d-4abc-a8c1-c4adf5616352" />
+├── outputs.tf
+└── APPROACH.md
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/b72d0e94-b16f-4065-b1dd-84cc1deb69bf" />
 
-Configurable parameters such as AWS region, VPC CIDR, availability zones, database configuration, and EC2 instance type are defined in `variables.tf`.
+Terraform state is stored remotely in Amazon S3 using:
 
-Key resource outputs include the VPC ID, ALB DNS name, ECR repository URL, EC2 private IPs, and RDS endpoint.
+S3 bucket with versioning enabled
+Server-side encryption
+Native S3 state locking using use_lockfile = true
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/98361583-0fa2-4e82-ab69-3251fea6164b" />
+
+This prevents concurrent Terraform operations from modifying the state simultaneously and provides a centralized state location for infrastructure management.
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/57b45fbb-023b-43c2-976c-68005c507a05" />
 
 ### Terraform Commands
 
@@ -149,6 +156,30 @@ The monitoring setup includes dashboards for:
 * Disk utilization
   <img width="980" height="515" alt="image" src="https://github.com/user-attachments/assets/4a520fea-f79e-4a18-99eb-9e0c02b64e2d" />
 
+## Amazon CloudWatch
+
+EC2 monitoring
+ALB metrics such as request count, response time, and HTTP errors
+RDS metrics such as CPU utilization and database connections
+CloudWatch alarms for infrastructure conditions
+Centralized system and application logs
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/04d7e4ad-f757-4a58-aab0-241ebc6fc022" />
+
+
+CloudWatch Agent is configured to collect:
+
+/var/log/syslog
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/f5b00ed1-26b2-4510-871b-e2dad1cfabe3" />
+
+/var/log/auth.log
+/opt/devops-app/logs/application.log
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/76417035-1d9f-431a-8fe8-d1b833a2f55d" />
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/1551d22e-4167-41c3-894c-e7cb8e2037a1" />
+
+Logs are organized into CloudWatch Log Groups for system and application visibility.
+
+Grafana and CloudWatch are used together to provide both infrastructure visualization and AWS-native resource, logging, and alarm monitoring.
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/1cc88384-6a48-49a0-aa2c-d1a0fc9d44ef" />
 
 Email notifications are also configured for Jenkins build/deployment status such as successful, failed, or unstable executions.
 <img width="992" height="486" alt="image" src="https://github.com/user-attachments/assets/cb89098b-1d53-453f-aaff-c094a1dc71f3" />
