@@ -112,13 +112,12 @@ Kubernetes Deployment
 <img width="990" height="405" alt="image" src="https://github.com/user-attachments/assets/650bbac0-cca4-4b43-8a4b-366d6a74f7d7" />
 <img width="979" height="524" alt="image" src="https://github.com/user-attachments/assets/337a07f1-6520-4bf9-bfa4-14357d7d218d" />
 <img width="971" height="498" alt="image" src="https://github.com/user-attachments/assets/6b817aa8-609f-430f-8ae7-0edba258cab1" />
-<img width="979" height="514" alt="image" src="https://github.com/user-attachments/assets/a6051453-0b0c-4775-a3b5-48a1378de67c" />
 <img width="972" height="522" alt="image" src="https://github.com/user-attachments/assets/3d7be0b7-01c7-4146-a27d-08ce362e75a5" />
 
-GitHub webhook integration is used to trigger the Jenkins pipeline when code is pushed.
+### GitHub webhook integration is used to trigger the Jenkins pipeline when code is pushed.
 <img width="972" height="523" alt="image" src="https://github.com/user-attachments/assets/6ff95eab-9c82-45d9-937a-4d8ade63a580" />
 
-Jenkins credentials are used for registry authentication rather than storing credentials in the source code.
+### Jenkins credentials are used for registry authentication rather than storing credentials in the source code.
 <img width="973" height="511" alt="image" src="https://github.com/user-attachments/assets/d315395b-f4fc-4854-b006-cebeed13e4a8" />
 
 ## Kubernetes
@@ -132,6 +131,7 @@ kubectl apply -f kubernetesdeploy.yaml
 kubectl get pods
 kubectl get services
 ```
+<img width="979" height="514" alt="image" src="https://github.com/user-attachments/assets/23ca8798-51f7-4060-a7d3-5215bbb21d4e" />
 
 ## Monitoring
 
