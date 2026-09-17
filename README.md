@@ -153,6 +153,21 @@ The monitoring setup includes dashboards for:
 Email notifications are also configured for Jenkins build/deployment status such as successful, failed, or unstable executions.
 <img width="992" height="486" alt="image" src="https://github.com/user-attachments/assets/cb89098b-1d53-453f-aaff-c094a1dc71f3" />
 
+## DevSecOps & Notification Experience
+
+In addition to the tools implemented in this healthcare project, I have hands-on experience with the following DevSecOps practices in other projects:
+
+SonarQube – static code quality and security analysis
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/03d37344-1c42-47f4-915c-6ce18b5a0e15" />
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/b5902d6a-9ed8-4a49-8d63-b105a7e2cabe" />
+
+Trivy – container image vulnerability scanning
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/4e4bad79-2ed0-48ea-8d10-cbec5ccfe480" />
+
+Slack – CI/CD build and deployment notifications
+<img width="979" height="552" alt="image" src="https://github.com/user-attachments/assets/7c7a9a06-843f-4ba3-9626-e00616f760f8" />
+
+Screenshots/evidence for these tools may be provided separately as previous-project experience and are not represented as implementations of the current healthcare project.
 ## Security Considerations
 
 * AWS resources are protected using security groups.
