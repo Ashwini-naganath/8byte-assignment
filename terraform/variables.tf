@@ -39,3 +39,9 @@ variable "app_instance_type" {
   type        = string
   default     = "t3.micro"
 }
+
+variable "public_key_path" {
+  description = "Path to the SSH public key used for the EC2 key pair"
+  type        = string
+  default     = "../devops-deploy-key.pub"
+}

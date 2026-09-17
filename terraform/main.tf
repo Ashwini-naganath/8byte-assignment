@@ -300,7 +300,7 @@ resource "aws_iam_instance_profile" "ec2" {
 }
 resource "aws_key_pair" "deploy" {
   key_name   = "devops-deploy-key"
-  public_key = file("${path.module}/../devops-deploy-key.pub")
+  public_key = file(var.public_key_path)
 }
 # ---------------------------------------------------------
 # ECR
